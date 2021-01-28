@@ -581,14 +581,11 @@ ENDIF ( BUILD_TESTING )
 #####
 ############################################################################
 
-IF (NOT WIN32 OR MINGW)
+find_package(Git REQUIRED)
 
-  ADD_CUSTOM_TARGET(GenerateGitHash
-    COMMAND ./git_log_mmg.sh ${PROJECT_SOURCE_DIR} ${COMMON_BINARY_DIR}
-    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/scripts/
-    COMMENT "Getting git commit hash"
-  )
-ENDIF ()
+ADD_CUSTOM_TARGET(GenerateGitHash
+COMMAND ${CMAKE_COMMAND} -D GIT_FOUND=${GIT_FOUND} -D GIT_EXECUTABLE=${GIT_EXECUTABLE} -D COMMON_BINARY_DIR=${COMMON_BINARY_DIR} -DPROJECT_SOURCE_DIR=${PROJECT_SOURCE_DIR} -P ${PROJECT_SOURCE_DIR}/cmake/git/gitinfo.cmake
+)
 
 ###############################################################################
 #####
