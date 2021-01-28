@@ -32,8 +32,8 @@ if(GIT_FOUND)
     FILE(WRITE ${COMMON_BINARY_DIR}/git_log_mmg.h
         "#ifndef _GIT_LOG_MMG_H\n"
         "#define _GIT_LOG_MMG_H\n"
-        "#define MMG_GIT_BRANCH ${MMG_GIT_BRANCH}\n"
-        "#define MMG_GIT_COMMIT ${MMG_GIT_COMMIT}\n"
+        "#define MMG_GIT_BRANCH \"${MMG_GIT_BRANCH}\"\n"
+        "#define MMG_GIT_COMMIT \"${MMG_GIT_COMMIT}\"\n"
         "#define MMG_GIT_DATE   ${MMG_GIT_DATE}\n"
         "#endif\n"
     )
